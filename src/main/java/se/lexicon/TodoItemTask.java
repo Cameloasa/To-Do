@@ -23,6 +23,13 @@ public class TodoItemTask {
         this.todoItem = getTodoItem();
     }
 
+    public TodoItemTask(int id, TodoItem todoItem, Person assignee) {
+        this.id = id;
+        this.todoItem = todoItem;
+        this.assignee = assignee;
+        this.assigned = (assignee != null);
+    }
+
     public TodoItemTask() {
 
     }
@@ -71,11 +78,17 @@ public class TodoItemTask {
 
     public void setAssignee(Person assignee) {
         this.assignee = assignee;
+        this.assigned = assignee !=null;
     }
 
     public String getSummary(){
-        return "Todo Item Task : " + "Id : " + id + " Item :" + todoItem + "Assignee : " + assignee  + " Assigned : " + assigned;
+        return "Todo Item Task : " +"Id : " + id +
+                " Item :" + todoItem.getSummary() +
+                "Assignee : " + assignee.getSummary()  +
+                " Assigned : " + assigned;
     }
+
+
 
     @Override
     public String toString() {

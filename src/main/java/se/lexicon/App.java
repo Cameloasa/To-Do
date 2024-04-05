@@ -47,7 +47,17 @@ public class App
         TodoItemTask todoItemTask1 = new TodoItemTask(1,true,"Create a website","Person1");
         System.out.println(todoItemTask1);
 
+
+
         TodoItemTask todoItemTask2 = new TodoItemTask();
+        todoItemTask2.setAssignee(person2);
+        todoItemTask2.setTodoItem(todoItem2);
+        todoItemTask2.setAssigned(true);
+        System.out.println(todoItemTask2.getSummary());
+
+        TodoItemTask todoItemTask3 = new TodoItemTask();
+
+
 
 
 

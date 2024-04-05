@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Person {
 
     // Fields
-    private static int nextId = 1;
+    private static int personId = 1;
     private int id;
     private String firstName; // not allowed to be null
     private String lastName; // not allowed to be null
@@ -34,10 +34,6 @@ public class Person {
 
     public String getEmail() {
         return email;
-    }
-
-    public static int getNextId() {
-        return nextId++;
     }
 
 
@@ -89,6 +85,11 @@ public class Person {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(id, firstName, lastName, email);
+    }
+
+    public static int nextPersonId() {
+        return personId++;
     }
 }

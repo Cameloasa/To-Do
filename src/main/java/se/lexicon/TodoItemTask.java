@@ -3,8 +3,8 @@ package se.lexicon;
 import java.util.Objects;
 
 public class TodoItemTask {
-
-    private static int nextId = 1;
+    //Fields
+    private static int todoItemTaskId = 1;
     private int id;
     private boolean assigned;
     private TodoItem todoItem;
@@ -39,10 +39,6 @@ public class TodoItemTask {
     //Getters
 
 
-    public static int getNextId() {
-        return nextId;
-    }
-
     public int getId() {
         return id;
     }
@@ -61,9 +57,6 @@ public class TodoItemTask {
 
     // Setters
 
-    public static void setNextId(int nextId) {
-        TodoItemTask.nextId = nextId;
-    }
 
     public void setId(int id) {
         this.id = id;
@@ -82,8 +75,6 @@ public class TodoItemTask {
         this.assignee = assignee;
         this.assigned = assignee !=null;
     }
-
-
 
 
 
@@ -107,6 +98,11 @@ public class TodoItemTask {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(id, assigned, todoItem, assignee);
+    }
+
+    public static int nextTodoItemTaskId() {
+        return todoItemTaskId++;
     }
 }

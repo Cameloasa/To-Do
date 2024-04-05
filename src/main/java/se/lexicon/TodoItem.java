@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class TodoItem {
     // Fields
-    private static int nextId = 1;
+    private static int todoItemId = 1;
     private int id; // representing each To Do element
     private String title ; // ex make your own code, change tires Not allowed to be null
     private String taskDescription; // hold further information
@@ -25,9 +25,6 @@ public class TodoItem {
     // Getters
     public int getId() {
         return id;
-    }
-    public static int getNextId(){
-        return nextId++;
     }
 
     public String getTitle() {
@@ -108,7 +105,12 @@ public class TodoItem {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(id, title, taskDescription, deadLine, done, creator);
+    }
+
+    public static int nextTodoItemId() {
+        return todoItemId++;
     }
 }
 

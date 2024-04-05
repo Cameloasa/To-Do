@@ -1,5 +1,7 @@
 package se.lexicon;
 
+import java.util.Objects;
+
 public class Person {
 
     // Fields
@@ -8,6 +10,7 @@ public class Person {
     private String firstName; // not allowed to be null
     private String lastName; // not allowed to be null
     private String email; // not allowed to be null
+    private AppUser credentials; // Reference to AppUser
 
     //Constructors
     public Person(int id, String firstName, String lastName, String email) {
@@ -36,6 +39,8 @@ public class Person {
     public static int getNextId() {
         return nextId++;
     }
+
+
     //Setters
     public void setFirstName(String firstName) {
         if(firstName == null) throw new IllegalArgumentException("This field should not be nul");
@@ -52,6 +57,18 @@ public class Person {
         this.email = email;
     }
 
+
+    // Credentials
+
+    public AppUser getCredentials() {
+        return credentials;
+    }
+
+    public void setCredentials(AppUser credentials) {
+        this.credentials = credentials;
+    }
+
+    //Override methods for ToString, Equals and HashCode
     @Override
     public String toString() {
         return "Person{" +
@@ -61,11 +78,17 @@ public class Person {
                 ", email='" + email + '\'' +
                 '}';
     }
-    // Method for getSummary
-    public String getSummary(){
-        return "Person info :" + "Id :" + id + " First name : " + firstName + ", Last name :" + lastName + " email :" + email;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return id == person.id && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(email, person.email);
     }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, email);
+    }
 }

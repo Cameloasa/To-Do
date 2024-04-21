@@ -1,5 +1,9 @@
 package se.lexicon;
 
+import se.lexicon.model.Person;
+import se.lexicon.model.TodoItem;
+import se.lexicon.model.TodoItemTask;
+
 import java.time.LocalDate;
 
 

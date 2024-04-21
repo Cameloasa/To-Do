@@ -1,11 +1,11 @@
-package se.lexicon;
+package se.lexicon.model;
 
 import java.util.Objects;
 
 public class Person {
 
     // Fields
-    private static int personId = 1;
+
     private int id;
     private String firstName; // not allowed to be null
     private String lastName; // not allowed to be null
@@ -38,6 +38,12 @@ public class Person {
 
 
     //Setters
+
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setFirstName(String firstName) {
         if(firstName == null) throw new IllegalArgumentException("This field should not be nul");
         this.firstName = firstName;
@@ -89,7 +95,5 @@ public class Person {
         return Objects.hash(id, firstName, lastName, email);
     }
 
-    public static int nextPersonId() {
-        return personId++;
-    }
+
 }

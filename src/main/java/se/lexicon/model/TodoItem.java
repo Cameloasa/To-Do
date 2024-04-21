@@ -1,11 +1,11 @@
-package se.lexicon;
+package se.lexicon.model;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class TodoItem {
     // Fields
-    private static int todoItemId = 1;
+
     private int id; // representing each To Do element
     private String title ; // ex make your own code, change tires Not allowed to be null
     private String taskDescription; // hold further information
@@ -109,8 +109,11 @@ public class TodoItem {
         return Objects.hash(id, title, taskDescription, deadLine, done, creator);
     }
 
-    public static int nextTodoItemId() {
-        return todoItemId++;
+
+
+    public enum Role {
+        ROLE_APP_USER,
+        ROLE_APP_ADMIN;
     }
 }
 

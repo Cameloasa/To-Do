@@ -4,10 +4,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import se.lexicon.model.Person;
 
+import java.util.Collection;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 //Create a New Person: Instantiate a new Person object with some sample data.
@@ -64,13 +64,38 @@ public class PersonDaoImplTest {
     }
     @Test
     public void testPersonFindAll(){
+        // Add some persons to the dao
+        Person person1 = new Person(1,"Jane","Kirby","email@test");
+        Person person2 = new Person(2,"John","Doe","test@email");
+        testObject.persist(person1);
+        testObject.persist(person2);
 
+        // Retrieve all persons
+        Collection<Person> allPersons = testObject.findAll();
+
+        // Assert that the number of retrieved persons matches the number of persisted persons
+        assertEquals(2, allPersons.size());
+        assertTrue(allPersons.contains(person1));
+        assertTrue(allPersons.contains(person2));
     }
+
     @Test
-    public void testRemovePerson(){
+    public void testRemovePerson() {
+        // Add a person to the dao
+        Person person = new Person(1,"John","Doe","test@test");
+        testObject.persist(person);
+
+        // Remove the person
+        assertTrue(testObject.remove(person.getId()));
+
+        // Assert that the person has been removed
+        assertFalse(testObject.findById(person.getId()).isPresent());
+
+    }
+
 
     }
 
 
 
-}
+
